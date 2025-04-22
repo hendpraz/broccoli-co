@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+.font-mono {
+  font-family: "B612 Mono", monospace;
+}
+
+.font-nunito {
+  font-family: "Nunito", sans-serif;
+}
+
+.font-atkinson {
+  font-family: "Atkinson Hyperlegible Mono", sans-serif;
+}

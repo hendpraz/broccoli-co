@@ -1,33 +1,48 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
+import { Modal } from "./components/Modal";
+import { Form } from "./components/Form";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [shouldShowModal, setShouldShowModal] = useState(false);
+
+  const handleRequestClick = () => {
+    setShouldShowModal(true);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Header />
+      <div className="flex min-h-screen bg-gray-100">
+        <div className="m-auto">
+          <div className="font-mono text-4xl text-center font-semibold">
+            <p>A better way</p>
+            <p>to enjoy every day.</p>
+          </div>
+
+          <div className="font-mono text-center text-lg mt-8">
+            <p> Be the first to know when we launch</p>
+          </div>
+
+          <div className="flex justify-center mt-8">
+            <button
+              className="px-4 py-4 border-1 font-mono cursor-pointer hover:bg-gray-200"
+              onClick={handleRequestClick}
+            >
+              Request an invite
+            </button>
+          </div>
+
+          <Modal
+            isOpen={shouldShowModal}
+            onClose={() => setShouldShowModal(false)}
+          >
+            <Form onClose={() => setShouldShowModal(false)} />
+          </Modal>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Footer />
     </>
   );
 }
