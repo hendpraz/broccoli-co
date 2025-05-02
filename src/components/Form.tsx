@@ -12,9 +12,12 @@ export const Form: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
+    const MIN_NAME_LENGTH = 3;
 
     if (!name.trim()) {
       newErrors.name = "Full name is required.";
+    } else if (name.length < MIN_NAME_LENGTH) {
+      newErrors.name = "Full name is too short, min. 3 characters";
     }
 
     if (!email.trim()) {
